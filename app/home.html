@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lightning Connect</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div class="app-header-left">
+          <div class="app-menu-title-block">
+            <h1 id="route-label">Home</h1>
+          </div>
+        </div>
+        <div class="app-header-center" id="page-header-content" aria-label="Page actions"></div>
+        <div class="app-header-right" aria-label="Profile actions">
+          <span class="header-badge organization-type-badge" id="organization-type-badge" aria-label="Salesforce organization type" hidden></span>
+          <span class="header-avatar" id="user-avatar" role="img" aria-label="User profile"></span>
+          <span class="header-user-name" id="user-name" aria-label="Signed-in user"></span>
+        </div>
+      </header>
+      <section id="feature-container" class="feature-container"></section>
+      <footer class="app-footer">
+        <div class="app-footer-left">
+          <span class="footer-separator" aria-hidden="true">|</span>
+          <a id="footer-org-link" class="footer-org-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open Connected Org" title="Open Connected Org" hidden>
+            <span class="footer-org-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M3.9 12c0-1.1.9-2 2-2h4V8h-4a4 4 0 0 0 0 8h4v-2h-4c-1.1 0-2-.9-2-2Zm3-1h10v2h-10v-2Zm8.2-3h-4v2h4c1.1 0 2 .9 2 2s-.9 2-2 2h-4v2h4a4 4 0 0 0 0-8Z" />
+            </svg>
+            </span>
+            <span id="footer-organization-name" hidden></span>
+          </a>
+          <span id="footer-org-separator" class="footer-separator" aria-hidden="true" hidden>|</span>
+          <span id="footer-org-name" aria-label="My Domain Name" title="My Domain Name"></span>
+          <span class="footer-separator" aria-hidden="true">|</span>
+          <span id="footer-api-version" aria-label="Salesforce API Version" title="Salesforce API Version">API v</span>
+          <span class="footer-separator" aria-hidden="true">|</span>
+          <span aria-label="Lightning Connect Version" title="Lightning Connect Version">LC v1.0</span>
+          <span class="footer-separator" aria-hidden="true">|</span>
+        </div>
+        <div class="app-footer-center" id="page-footer-content" aria-label="Page footer actions"></div>
+        <div class="app-footer-right" aria-label="Social links">
+          <span class="footer-separator footer-social-separator" aria-hidden="true">|</span>
+          <a class="footer-social-icon" href="https://www.linkedin.com/in/kumarvikky" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">in</a>
+          <span class="footer-separator footer-social-separator" aria-hidden="true">|</span>
+          <a class="footer-social-icon footer-github-icon" href="https://github.com/KumarVikky" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" focusable="false"><path d="M12 2.5a9.5 9.5 0 0 0-3 18.51c.48.09.65-.21.65-.46v-1.68c-2.65.58-3.21-1.13-3.21-1.13-.44-1.12-1.08-1.42-1.08-1.42-.88-.61.07-.6.07-.6.97.07 1.48.99 1.48.99.86 1.48 2.25 1.05 2.8.8.09-.63.34-1.05.61-1.29-2.12-.24-4.35-1.06-4.35-4.72 0-1.04.37-1.89.98-2.56-.1-.24-.43-1.21.09-2.52 0 0 .8-.26 2.62.98a9.1 9.1 0 0 1 4.77 0c1.82-1.24 2.62-.98 2.62-.98.52 1.31.19 2.28.09 2.52.61.67.98 1.52.98 2.56 0 3.67-2.23 4.48-4.36 4.72.35.3.65.87.65 1.76v2.61c0 .25.17.55.66.46A9.5 9.5 0 0 0 12 2.5Z" /></svg>
+          </a>
+          <span class="footer-separator footer-social-separator" aria-hidden="true">|</span>
+          <a class="footer-social-icon" href="https://x.com/info2vikky" target="_blank" rel="noopener noreferrer" title="X" aria-label="X">X</a>
+          <span class="footer-separator footer-social-separator" aria-hidden="true">|</span>
+          <span class="footer-supporter-wrap">
+            <a class="footer-supporter" href="https://buymeacoffee.com/kumarvikky" target="_blank" rel="noopener noreferrer" aria-label="Become a Supporter" tabindex="0">
+              <span class="footer-coffee-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false"><path d="M4 7h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V7Zm12 2h2a3 3 0 0 1 0 6h-2M7 21h10M8 4c0-1 1-1 1-2M12 4c0-1 1-1 1-2" /></svg>
+              </span>
+              <span class="footer-supporter-label">Become a Supporter</span>
+            </a>
+            <span class="footer-supporter-tip" role="tooltip">
+              <strong>Buy me a coffee</strong>
+              <span>Love what I’m building? Your support means the world!</span>
+              <strong>Become a Supporter</strong>
+              <span>— it helps me stay motivated, keep improving, and bring you even more awesome features.</span>
+              <span>Every bit of support fuels my passion to build better, faster, and with more heart.</span>
+              <span>Thank you! ☕️ 💗</span>
+            </span>
+          </span>
+          <span class="footer-separator footer-social-separator" aria-hidden="true">|</span>
+        </div>
+      </footer>
+      <script type="module" src="./home.js"></script>
+    </main>
+  </body>
+</html>

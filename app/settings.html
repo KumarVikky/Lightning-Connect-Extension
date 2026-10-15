@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lightning Connect - Settings</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <main class="settings-shell">
+      <header class="settings-header">
+        <div>
+          <h1>Lightning Connect</h1>
+          <p>Settings</p>
+        </div>
+      </header>
+      <section class="settings-card">
+        <div class="settings-tabbar" role="tablist" aria-label="Settings sections">
+          <button class="active" type="button" role="tab" aria-selected="true" aria-controls="general-settings" data-settings-tab="general">General</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="data-export-settings" data-settings-tab="data-export">Data Export</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="data-import-settings" data-settings-tab="data-import">Data Import</button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="developer-console-settings" data-settings-tab="developer-console">Developer Console</button>
+        </div>
+        <div id="general-settings" data-settings-panel="general" role="tabpanel">
+          <div class="api-row">
+            <div class="api-label">API Version <span class="info-tooltip" title="Select the Salesforce API version used for extension requests." aria-label="API version information">?</span></div>
+            <div class="api-input-wrap">
+              <select id="api-version" disabled></select>
+              <div id="api-version-status" class="api-status">Loading supported versions...</div>
+            </div>
+          </div>
+          <div class="theme-row">
+            <div class="theme-label">Dark Theme <span class="info-tooltip" title="Enable or disable dark theme across Lightning Connect pages and the Salesforce drawer." aria-label="Dark theme information">?</span></div>
+            <label class="theme-switch" title="Enable or disable dark theme">
+              <input id="theme-toggle" type="checkbox" aria-label="Enable dark theme" />
+              <span class="theme-switch-track" aria-hidden="true"><span class="theme-switch-thumb"></span></span>
+            </label>
+            <span id="theme-status" class="theme-status">Disabled</span>
+          </div>
+          <div class="cache-section">
+            <div class="cache-row">
+              <div class="cache-label">Clear All Extension Cache <span class="info-tooltip" title="Remove all extension storage, cached API versions, and local session data." aria-label="Clear cache information">?</span></div>
+              <button id="clear-cache" class="clear-cache-button" type="button">Clear All Cache</button>
+              <span id="cache-usage" class="cache-usage" aria-live="polite">Storage used: Loading…</span>
+            </div>
+            <div id="cache-status" class="cache-status" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+        <div id="data-export-settings" data-settings-panel="data-export" role="tabpanel" hidden>
+          <div class="settings-section">
+            <h2>SOQL Editor</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Font size
+                <input id="de-font-size" type="number" min="10" max="24" step="1" />
+              </label>
+              <label class="preference-field">Word wrap
+                <select id="de-word-wrap"><option value="on">On</option><option value="off">Off</option></select>
+              </label>
+              <label class="preference-field">Starter query LIMIT
+                <input id="de-starter-query-limit" type="number" min="1" max="2000" step="1" />
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="de-line-numbers" type="checkbox" /> Show line numbers</label>
+              <label><input id="de-minimap" type="checkbox" /> Show minimap</label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Workspace</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Object Explorer width
+                <input id="de-object-explorer-width" type="number" min="180" max="360" step="1" />
+              </label>
+              <label class="preference-field">Query History width
+                <input id="de-query-history-width" type="number" min="190" max="380" step="1" />
+              </label>
+              <label class="preference-field">Default Explorer tab
+                <select id="de-default-explorer-tab"><option value="objects">Objects</option><option value="fields">Fields</option></select>
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="de-object-explorer-visible" type="checkbox" /> Show Object Explorer by default</label>
+              <label><input id="de-query-history-visible" type="checkbox" /> Show Query History by default</label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Results</h2>
+            <div class="preference-toggles">
+              <label><input id="de-wrap-text" type="checkbox" /> Wrap result text by default</label>
+              <label><input id="de-related-records-expanded" type="checkbox" /> Expand related-record sections by default</label>
+              <label><input id="de-remember-visible-columns" type="checkbox" /> Remember visible columns for each object</label>
+              <label><input id="de-auto-fetch-enabled" type="checkbox" /> Auto-fetch additional result pages</label>
+            </div>
+            <div class="settings-grid">
+              <label class="preference-field">Maximum auto-fetched pages
+                <select id="de-auto-fetch-max-pages"><option value="1">1</option><option value="3">3</option><option value="5">5</option><option value="10">10</option></select>
+              </label>
+            </div>
+            <div class="settings-grid explorer-color-grid">
+              <label class="preference-field">Parent table color
+                <input id="de-parent-table-color" type="color" aria-label="Parent result table color" />
+              </label>
+              <label class="preference-field">Child table color
+                <input id="de-child-table-color" type="color" aria-label="Child result table color" />
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Query History</h2>
+            <div class="preference-toggles">
+              <label><input id="de-query-history-enabled" type="checkbox" /> Save query history</label>
+            </div>
+            <div class="settings-grid">
+              <label class="preference-field">Saved query limit
+                <select id="de-query-history-limit"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="250">250</option></select>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section settings-actions-section">
+            <button id="de-reset-preferences" class="clear-cache-button" type="button">Reset Data Export Preferences</button>
+            <div id="data-export-status" class="cache-status" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+        <div id="data-import-settings" data-settings-panel="data-import" role="tabpanel" hidden>
+          <div class="settings-section">
+            <h2>Operation defaults</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Default operation
+                <select id="di-default-operation"><option value="create">Create</option><option value="update">Update</option><option value="upsert">Upsert</option><option value="delete">Delete</option></select>
+              </label>
+              <label class="preference-field">Default Upsert match
+                <select id="di-default-upsert-match-mode"><option value="externalId">External Id</option><option value="id">Id</option></select>
+              </label>
+            </div>
+          </div>
+          <div class="settings-section">
+            <h2>Record input</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Default input method
+                <select id="di-default-input-mode"><option value="manual">Manual Fields</option><option value="csv">File Upload</option><option value="paste">Paste Data</option></select>
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="di-required-fields-only" type="checkbox" /> Show only required fields initially</label>
+              <label><input id="di-auto-select-staged-records" type="checkbox" /> Select newly staged records automatically</label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Staging &amp; results</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Default download format
+                <select id="di-default-download-format"><option value="csv">CSV</option><option value="xlsx">Excel</option></select>
+              </label>
+              <label class="preference-field">Staged table color
+                <input id="di-stage-table-color" type="color" aria-label="Staged table color" />
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="di-compact-columns" type="checkbox" /> Start with compact columns</label>
+              <label><input id="di-wrap-table-text" type="checkbox" /> Wrap staged table values by default</label>
+              <label><input id="di-show-field-api-names" type="checkbox" /> Show mapped Salesforce API names in table headers</label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Processing</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Default batch size
+                <input id="di-batch-size" type="number" min="1" max="200" step="1" />
+              </label>
+              <label class="preference-field">Default threads
+                <input id="di-threads" type="number" min="1" max="5" step="1" />
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Workspace</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Step 1 panel width
+                <input id="di-operation-panel-width" type="number" min="170" max="320" step="1" />
+              </label>
+              <label class="preference-field">Saved Mappings width
+                <input id="di-saved-mappings-width" type="number" min="220" max="420" step="1" />
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="di-saved-mappings-visible" type="checkbox" /> Show Saved Mappings by default</label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Saved mappings</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Maximum saved mappings per Salesforce org
+                <select id="di-saved-mapping-limit"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="250">250</option></select>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-section settings-actions-section">
+            <button id="di-reset-preferences" class="clear-cache-button" type="button">Reset Data Import Preferences</button>
+            <div id="data-import-status" class="cache-status" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+        <div id="developer-console-settings" data-settings-panel="developer-console" role="tabpanel" hidden>
+          <div class="settings-section">
+            <h2>Editor</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Font size
+                <input id="dc-font-size" type="number" min="10" max="24" step="1" />
+              </label>
+              <label class="preference-field">Word wrap
+                <select id="dc-word-wrap"><option value="on">On</option><option value="off">Off</option></select>
+              </label>
+              <label class="preference-field">Whitespace
+                <select id="dc-render-whitespace"><option value="none">None</option><option value="selection">Selection</option><option value="boundary">Boundary</option><option value="all">All</option></select>
+              </label>
+              <label class="preference-field">Indentation
+                <select id="dc-insert-spaces"><option value="true">Spaces</option><option value="false">Tabs</option></select>
+              </label>
+              <label class="preference-field">Tab size
+                <select id="dc-tab-size"><option value="2">2 spaces</option><option value="4">4 spaces</option></select>
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="dc-minimap" type="checkbox" /> Show minimap</label>
+              <label><input id="dc-line-numbers" type="checkbox" /> Show line numbers</label>
+              <label><input id="dc-format-on-paste" type="checkbox" /> Format on paste</label>
+              <label><input id="dc-format-on-type" type="checkbox" /> Format while typing</label>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Workspace</h2>
+            <div class="settings-grid">
+              <label class="preference-field">File Explorer width
+                <input id="dc-sidebar-width" type="number" min="240" max="560" step="1" />
+              </label>
+              <label class="preference-field">Log panel height
+                <input id="dc-logs-height" type="number" min="140" max="420" step="1" />
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="dc-sidebar-visible" type="checkbox" /> Show File Explorer by default</label>
+              <label><input id="dc-logs-visible" type="checkbox" /> Show Log Panel by default</label>
+              <label><input id="dc-show-log-toggle" type="checkbox" /> Show Log Panel toggle in footer</label>
+              <label><input id="dc-show-explorer-toggle" type="checkbox" /> Show File Explorer toggle in footer</label>
+            </div>
+            <button id="dc-reset-layout" class="secondary-button" type="button">Reset Layout</button>
+          </div>
+
+          <div class="settings-section">
+            <h2>Save &amp; Deploy</h2>
+            <div class="preference-toggles">
+              <label><input id="dc-confirm-deploy" type="checkbox" /> Show Save &amp; Deploy confirmation</label>
+            </div>
+            <button id="dc-reset-deploy-confirmation" class="secondary-button" type="button">Reset Deployment Confirmation</button>
+          </div>
+
+          <div class="settings-section">
+            <h2>Logs</h2>
+            <div class="settings-grid">
+              <label class="preference-field">Maximum retained entries
+                <select id="dc-max-log-entries"><option value="50">50</option><option value="100">100</option><option value="250">250</option></select>
+              </label>
+            </div>
+            <div class="preference-toggles">
+              <label><input id="dc-show-clear-logs" type="checkbox" /> Show Clear Logs button</label>
+              <label><input id="dc-log-timestamps" type="checkbox" /> Show timestamps</label>
+              <label><input id="dc-auto-scroll-logs" type="checkbox" /> Auto-scroll to latest log</label>
+            </div>
+            <button id="dc-clear-logs" class="secondary-button" type="button">Clear Open Logs</button>
+          </div>
+
+          <div class="settings-section">
+            <h2>File Explorer</h2>
+            <div class="preference-toggles">
+              <label><input id="dc-remember-expanded" type="checkbox" /> Remember expanded folders</label>
+              <label><input id="dc-reveal-active-file" type="checkbox" /> Reveal active editor file automatically</label>
+            </div>
+            <div class="settings-grid explorer-color-grid">
+              <label class="preference-field">Root text color
+                <input id="dc-explorer-root-text-color" type="color" aria-label="File Explorer root text color" />
+              </label>
+              <label class="preference-field">Node text color
+                <input id="dc-explorer-node-text-color" type="color" aria-label="File Explorer node text color" />
+              </label>
+              <label class="preference-field">Resource text color
+                <input id="dc-explorer-resource-text-color" type="color" aria-label="File Explorer resource text color" />
+              </label>
+            </div>
+            <button id="dc-clear-local-files" class="secondary-button danger-secondary-button" type="button">Clear Local Files</button>
+          </div>
+
+          <div class="settings-section settings-actions-section">
+            <button id="dc-reset-preferences" class="clear-cache-button" type="button">Reset Developer Console Preferences</button>
+            <div id="developer-console-status" class="cache-status" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="clear-cache-modal" class="settings-modal" hidden>
+      <div class="settings-modal-backdrop" data-clear-cache-cancel></div>
+      <section class="settings-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-cache-modal-title" aria-describedby="clear-cache-modal-description" tabindex="-1">
+        <h2 id="clear-cache-modal-title">Clear all extension cache?</h2>
+        <p id="clear-cache-modal-description">This removes cached data, saved preferences, API versions, Local Files, and session storage. This action cannot be undone.</p>
+        <div class="settings-modal-actions">
+          <button id="clear-cache-no" class="secondary-button" type="button">No</button>
+          <button id="clear-cache-yes" class="clear-cache-button" type="button">Yes, Clear Cache</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="clear-local-files-modal" class="settings-modal" hidden>
+      <div class="settings-modal-backdrop" data-clear-local-files-cancel></div>
+      <section class="settings-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="clear-local-files-modal-title" aria-describedby="clear-local-files-modal-description" tabindex="-1">
+        <h2 id="clear-local-files-modal-title">Clear Local Files?</h2>
+        <p id="clear-local-files-modal-description">All Local Files and folders in Developer Console will be permanently deleted. This action cannot be undone.</p>
+        <div class="settings-modal-actions">
+          <button id="clear-local-files-no" class="secondary-button" type="button">No</button>
+          <button id="clear-local-files-yes" class="clear-cache-button" type="button">Yes, Clear Local Files</button>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="settings.js"></script>
+  </body>
+</html>
