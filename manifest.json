@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Lightning Connect",
+  "version": "1.0.0",
+  "description": "Injects a Salesforce-only launcher and opens reusable Tooling API workflows in a separate tab.",
+  "permissions": ["cookies", "storage", "tabs", "activeTab"],
+  "host_permissions": [
+    "https://*.lightning.force.com/*",
+    "https://*.salesforce.com/*",
+    "https://*.my.salesforce.com/*",
+    "https://*.my.salesforce-setup.com/*",
+    "https://*.file.force.com/*",
+    "https://*.content.force.com/*",
+    "https://*.visual.force.com/*",
+    "https://*.salesforce-setup.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Lightning Connect",
+    "default_icon": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.lightning.force.com/*",
+        "https://*.salesforce.com/*",
+        "https://*.my.salesforce.com/*",
+        "https://*.my.salesforce-setup.com/*"
+      ],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "dist/home.html",
+        "dist/settings.html",
+        "dist/assets/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
